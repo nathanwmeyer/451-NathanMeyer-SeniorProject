@@ -1,0 +1,35 @@
+﻿@model IEnumerable<_451_NathanMeyer_SeniorProject.Models.SaveGameDTO>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SaveDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SaveDate)
+            </td>
+            <td>
+                <a href="/game/loadgame/@item.Id">Load This Save</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<p><a asp-controller="Game" asp-action="Index">Return to game (This will start a new game)</a></p>

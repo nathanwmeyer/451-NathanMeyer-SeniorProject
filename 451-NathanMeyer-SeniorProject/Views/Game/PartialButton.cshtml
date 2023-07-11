@@ -1,0 +1,12 @@
+﻿@model _451_NathanMeyer_SeniorProject.Models.ButtonModel
+
+@{
+    string[] img = { "offButton.png", "onButton.png" };
+}
+
+<button class="game-button" type="submit" value="@Model.ButtonId" name="buttonNumber" asp-controller="Game" asp-action="HandleButtonClick">
+    <img class="game-button-image" src="~/img/@img[Model.State]"/>
+    <div class="button-label">
+        @Model.ButtonId
+    </div>
+</button>

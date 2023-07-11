@@ -1,0 +1,64 @@
+﻿@model IEnumerable<_451_NathanMeyer_SeniorProject.Models.ButtonModel>
+
+<style>
+    .game-button {
+        width:55px;
+    }
+
+    .game-button-image {
+        width: 50px;
+    }
+
+    .button-box {
+        display:flex;
+        flex-wrap: wrap;
+    }
+
+    .line-break {
+        flex-basis: 100%;
+        height: 0;
+    }
+
+    .button-label {
+        font-size: 11px;
+        text-align: center;
+    }
+</style>
+
+@{
+    string[] img = { "offButton.png", "onButton.png" };
+}
+
+<form>
+    <div>
+        <button class="btn btn-primary" type="submit" asp-controller="Game" asp-action="ViewGames">
+            View Saved Games
+        </button>
+    </div>
+    <p>Game started: @DateTime.Now</p>
+    <div class="button-box">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            @if (i % ViewBag.rowLength == 0)
+            {
+                <div class="line-break"></div>
+            }
+
+            <div id=@i>
+                <button class="game-button" type="submit" value="@Model.ElementAt(i).ButtonId" name="buttonNumber" asp-controller="Game" asp-action="HandleButtonClick">
+                    <img class="game-button-image" src="~/img/@img[Model.ElementAt(i).State]" />
+                    <div class="button-label">
+                        @Model.ElementAt(i).ButtonId
+                    </div>
+                </button>
+            </div>
+        }
+    </div>
+    <h5 class="gameMessage">@ViewBag.Message</h5>
+
+    <div>
+        <h1>Save Your Game? Start a New Game?</h1>
+        <button class="btn btn-primary" type="submit" asp-controller="Game" asp-action="SaveGame">SAVE</button>
+        <button class="btn btn-primary" type="submit" asp-controller="Game" asp-action="Index">NEW GAME</button>
+    </div>
+</form>
