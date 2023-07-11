@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace _451_NathanMeyer_SeniorProject.Controllers
 {
-    // class: GameController. This controller manages the Lights Out game through the user of the LightsOutLogicService class.
+    // class: GameController. This controller manages the Lights Out game through the use of the LightsOutLogicService class.
     public class GameController : Controller
     {
         static List<ButtonModel> buttons = new List<ButtonModel>();
