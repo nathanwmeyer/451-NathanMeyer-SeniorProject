@@ -17,6 +17,7 @@ namespace _451_NathanMeyer_SeniorProject.Controllers
         [HttpGet("view/{id}")]
         public ActionResult <IEnumerable<SaveGameDTO>> Index(int id)
         {
+            // return a json of the saved games belonging to the user id
             return saveService.FindUserGames(id);
         }
 
@@ -24,6 +25,7 @@ namespace _451_NathanMeyer_SeniorProject.Controllers
         [HttpGet("load/{id}")]
         public ActionResult <SaveGameDTO> ShowOneSaveGame(int id)
         {
+            // return a json of the saved game with the requested id
             return saveService.LoadGame(id);
         }
 
@@ -31,7 +33,10 @@ namespace _451_NathanMeyer_SeniorProject.Controllers
         [HttpGet("save")]
         public ActionResult <string> SaveOneGame(SaveGameDTO savegame)
         {
+            // attempt to save a game that was stored in the body of the request
             bool saved = saveService.SaveGame(savegame);
+
+            // return a message stating if the save attempt passed or failed
             if (saved) { return "save successful"; } else return "save failed";
         }
     }

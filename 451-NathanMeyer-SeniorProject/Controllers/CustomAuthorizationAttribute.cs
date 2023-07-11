@@ -9,7 +9,10 @@ namespace _451_NathanMeyer_SeniorProject.Controllers
         // method: OnAuthorization. This method checks if the user is logged in and redirects the user to the login page if they are not logged in
         public void OnAuthorization(AuthorizationFilterContext context)
         {
+            // retrieve the username in the session
             string username = context.HttpContext.Session.GetString("username");
+
+            // if there is no username in the session, redirect the user to the login page
             if (username == null) { context.Result = new RedirectResult("/login"); }
             else { }
         }

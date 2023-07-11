@@ -4,6 +4,7 @@ using System.Diagnostics;
 
 namespace _451_NathanMeyer_SeniorProject.Controllers
 {
+    // class: HomeController. This class is a controller that displays the home page of the application. The home page is used to navigate to other parts of the application
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

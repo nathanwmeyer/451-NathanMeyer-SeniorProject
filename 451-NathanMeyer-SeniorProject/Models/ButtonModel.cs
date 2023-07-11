@@ -9,7 +9,10 @@
             State = state;
         }
 
+        // ButtonID: the button's id on the board
         public int ButtonId { get; set; }
+
+        // State: the button's state, 1 is on, 0 is off
         public int State { get; set; }
     }
 }
