@@ -26,9 +26,11 @@ namespace _451_NathanMeyer_SeniorProject.Controllers
         {
             // set the length of the rows for the game board
             ViewBag.RowLength = gameLogic.getRowLength();
+            bool solvable = false;
 
             // generate a new board
             buttons = gameLogic.setup();
+
 
             // set the initial message
             message = "Are you able to turn off all of the lights? Click on a light to change its state.";
