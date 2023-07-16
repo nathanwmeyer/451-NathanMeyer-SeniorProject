@@ -75,13 +75,13 @@ namespace _451_NathanMeyer_SeniorProject.Services
             return finished;
         }
 
-        // method: isSolvable. This method checks if the current game board is solvable. Currently always returns true but will check if the board is solvable.
+        // method: isSolvable. This method checks if the current game board is solvable. Checks if the board is solvable.
         public bool isSolvable(List<ButtonModel> buttons) {
             int x = 0;
             int y = 0;
                 for (int i = 0; i < buttons.Count; i++) // check through the entire grid in a pattern
                 {
-                    if (i == 0 || i == 2 || i == 4 || i == 5 || i == 7 || i == 9 || i == 15 || i == 17 || i == 19 || i == 20 || i == 22 || i == 24) // ignore these buttons
+                if (i == 0 || i == 2 || i == 4 || i == 5 || i == 7 || i == 9 || i == 15 || i == 17 || i == 19 || i == 20 || i == 22 || i == 24) // check these buttons
                     {
                         if (buttons[i].State == 1) { x++; } // count the number of lit buttons that weren't ignored
 
@@ -92,7 +92,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
 
                 for (int i = 0; i < buttons.Count; i++) // check through the entire grid in a pattern
             {
-                    if (i == 0 || i == 1 || i == 3 || i == 4 || i == 10 || i == 11 || i == 13 || i == 14 || i == 20 || i == 21 || i == 23 || i == 24) // ignore these buttons
+                    if (i == 0 || i == 1 || i == 3 || i == 4 || i == 10 || i == 11 || i == 13 || i == 14 || i == 20 || i == 21 || i == 23 || i == 24) // check these buttons
                     {
                         if (buttons[i].State == 1) { y++; } // count the number of lit buttons that weren't ignored
 
