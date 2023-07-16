@@ -90,18 +90,17 @@ namespace _451_NathanMeyer_SeniorProject.Services
                 Console.WriteLine("Buttons on x: " + (x % 2 == 0)); // confirm in the console that the number of buttons counted is even
                 if (x % 2 != 0) return false; // return false if the number of buttons counted was odd
 
-                x = 0;
                 for (int i = 0; i < buttons.Count; i++) // check through the entire grid in a pattern
             {
                     if (i == 0 || i == 1 || i == 3 || i == 4 || i == 10 || i == 11 || i == 13 || i == 14 || i == 20 || i == 21 || i == 23 || i == 24) // ignore these buttons
                     {
-                        if (buttons[i].State == 1) { x++; } // count the number of lit buttons that weren't ignored
+                        if (buttons[i].State == 1) { y++; } // count the number of lit buttons that weren't ignored
 
                     }
                 }
                 Console.WriteLine("Buttons on y: " + (y % 2 == 0)); // confirm in the console that the number of buttons counted is even
             if (y % 2 != 0) return false;
-            Console.WriteLine("^"); // if we got to this point in the code, both tests must have passed.
+            Console.WriteLine("^ Generated at: " + DateTime.Now); // if we got to this point in the code, both tests must have passed.
             return true; // if both tests have passed, the puzzle is solvable. Return true
         }
 
