@@ -9,7 +9,10 @@ namespace _451_NathanMeyer_SeniorProject.Services
     public class SecurityDAO
     {
         // connection string for connecting to the MySQL database
-        public string ConnectionString = @"Data Source=(localdb)\ProjectModels;Initial Catalog=CST451Database;Integrated Security=True;Connect Timeout=30;Encrypt=False";
+        public string ConnectionString = @"Database=localdb;Data Source=127.0.0.1:55629;User Id=azure;Password=6#vWHD_$";
+
+        // OLD CONNECTION STRING FOR LOCAL TESTING
+        // public string ConnectionString = @"Data Source=(localdb)\ProjectModels;Initial Catalog=CST451Database;Integrated Security=True;Connect Timeout=30;Encrypt=False";
 
         public SecurityDAO() { }
 

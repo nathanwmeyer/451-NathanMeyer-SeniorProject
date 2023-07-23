@@ -7,7 +7,10 @@ namespace _451_NathanMeyer_SeniorProject.Services
     public class SaveGameDAO
     {
         // connection string for connecting to the MySQL database
-        string connectionString = @"Data Source=(localdb)\ProjectModels;Initial Catalog=CST451Database;Integrated Security=True;Connect Timeout=30;Encrypt=False";
+        public string connectionString = @"Database=localdb;Data Source=127.0.0.1:55629;User Id=azure;Password=6#vWHD_$";
+
+        // OLD CONNECTION STRING FOR LOCAL TESTING
+        // string connectionString = @"Data Source=(localdb)\ProjectModels;Initial Catalog=CST451Database;Integrated Security=True;Connect Timeout=30;Encrypt=False";
 
         // method: FindUserGames. This method returns a list of games that have a user id matching the requested id.
         public List<SaveGameDTO> FindUserGames(int id)
