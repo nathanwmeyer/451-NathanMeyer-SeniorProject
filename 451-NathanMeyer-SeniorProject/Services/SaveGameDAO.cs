@@ -19,7 +19,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
             List<SaveGameDTO> foundGames = new List<SaveGameDTO>();
 
             // prepare a SQL statement
-            string sqlStatement = "SELECT * FROM localdb.SavedGames WHERE UserID = @id";
+            string sqlStatement = "SELECT * FROM SavedGames WHERE UserID = @id";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -57,7 +57,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
             SaveGameDTO foundSave = new SaveGameDTO();
 
             // prepare a SQL statement
-            string sqlStatement = "SELECT * FROM localdb.SavedGames WHERE GameId = @id";
+            string sqlStatement = "SELECT * FROM SavedGames WHERE GameId = @id";
 
             using (SqlConnection connection = new SqlConnection( connectionString))
             {
@@ -94,7 +94,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
             bool success = true;
 
             // prepare a SQL statement
-            string sqlStatement = "INSERT INTO localdb.SavedGames (USERID, SAVEDATA, SAVEDATE) VALUES (@userid, @savedata, @savedate)";
+            string sqlStatement = "INSERT INTO SavedGames (USERID, SAVEDATA, SAVEDATE) VALUES (@userid, @savedata, @savedate)";
 
             using (SqlConnection conn = new SqlConnection(connectionString)) 
             {
