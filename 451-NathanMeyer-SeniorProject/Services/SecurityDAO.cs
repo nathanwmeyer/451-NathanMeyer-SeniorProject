@@ -23,7 +23,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
             string hash = "";
 
             // prepare a SQL statement
-            string sqlStatement = "SELECT * FROM Users WHERE USERNAME = @username";
+            string sqlStatement = "SELECT * FROM users WHERE USERNAME = @username";
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
@@ -75,7 +75,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
             UserModel userModel = new UserModel();
 
             // prepare a SQL statement
-            string sqlStatement = "SELECT * FROM Users WHERE USERNAME = @username";
+            string sqlStatement = "SELECT * FROM users WHERE USERNAME = @username";
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
@@ -116,7 +116,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
             bool success = true;
 
             // prepare a SQL statement
-            string sqlStatement = "INSERT INTO Users (USERNAME, PASSWORD) VALUES (@username, @password)";
+            string sqlStatement = "INSERT INTO users (USERNAME, PASSWORD) VALUES (@username, @password)";
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
