@@ -23,7 +23,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
             string hash = "";
 
             // prepare a SQL statement
-            string sqlStatement = "SELECT * FROM dbo.Users WHERE USERNAME = @username";
+            string sqlStatement = "SELECT * FROM localdb.Users WHERE USERNAME = @username";
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
@@ -75,7 +75,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
             UserModel userModel = new UserModel();
 
             // prepare a SQL statement
-            string sqlStatement = "SELECT * FROM dbo.Users WHERE USERNAME = @username";
+            string sqlStatement = "SELECT * FROM localdb.Users WHERE USERNAME = @username";
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
@@ -116,7 +116,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
             bool success = true;
 
             // prepare a SQL statement
-            string sqlStatement = "INSERT INTO dbo.Users (USERNAME, PASSWORD) VALUES (@username, @password)";
+            string sqlStatement = "INSERT INTO localdb.Users (USERNAME, PASSWORD) VALUES (@username, @password)";
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
