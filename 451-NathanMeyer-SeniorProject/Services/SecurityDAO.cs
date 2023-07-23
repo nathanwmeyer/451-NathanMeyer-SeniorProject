@@ -1,4 +1,5 @@
 ﻿using _451_NathanMeyer_SeniorProject.Models;
+using NLog;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Security.Policy;
@@ -8,8 +9,10 @@ namespace _451_NathanMeyer_SeniorProject.Services
     // class: SecurityDAO. This class connects to the MySQL database and manages User information.
     public class SecurityDAO
     {
+        private static Logger logger = LogManager.GetLogger("SeniorAppLoggerrule");
+
         // connection string for connecting to the MySQL database
-        public string ConnectionString = @"Database=localdb;Data Source=127.0.0.1:55629;User Id=azure;Password=6#vWHD_$";
+        public string ConnectionString = @"Server=tcp:nmeyer-testserver.database.windows.net,1433;Initial Catalog=GCU-CST-407;Persist Security Info=False;User ID=userAdmin;Password=V7rSJCvxSzjdd6K;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         // OLD CONNECTION STRING FOR LOCAL TESTING
         // public string ConnectionString = @"Data Source=(localdb)\ProjectModels;Initial Catalog=CST451Database;Integrated Security=True;Connect Timeout=30;Encrypt=False";
@@ -23,8 +26,9 @@ namespace _451_NathanMeyer_SeniorProject.Services
             string hash = "";
 
             // prepare a SQL statement
-            string sqlStatement = "SELECT * FROM users WHERE USERNAME = @username";
+            string sqlStatement = "SELECT * FROM [dbo].[Users] WHERE USERNAME = @username";
 
+            logger.Info("attempting to open connection");
             using (SqlConnection connection = new SqlConnection(ConnectionString))
                 {
                 // create a SQL command using the prepared statement
@@ -32,6 +36,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
 
                 // add parameters to the command
                 command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 255).Value = user.Username;
+                logger.Info("added parameters to statement, attempting execution");
 
                 try
                 {
@@ -61,6 +66,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
                 }
                 catch (Exception ex) // catch exceptions during the command execution
                 {
+                    logger.Error(ex.Message);
                     Console.Write(ex.Message);
                 }
             }
@@ -75,8 +81,9 @@ namespace _451_NathanMeyer_SeniorProject.Services
             UserModel userModel = new UserModel();
 
             // prepare a SQL statement
-            string sqlStatement = "SELECT * FROM users WHERE USERNAME = @username";
+            string sqlStatement = "SELECT * FROM [dbo].[Users] WHERE USERNAME = @username";
 
+            logger.Info("attempting to open connection");
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 // create a SQL command using the prepared statement
@@ -85,6 +92,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
                 // add parameters to the command
                 command.Parameters.Add("@username", System.Data.SqlDbType.VarChar, 255).Value = user.Username;
 
+                logger.Info("added parameters to statement, attempting execution");
                 try
                 {
                     // open the connection and execute the command
@@ -104,6 +112,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
                 }
                 catch (Exception ex) // catch exceptions during the command execution
                 {
+                    logger.Error(ex.Message);
                     Console.Write(ex.Message);
                 }
             }
@@ -116,7 +125,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
             bool success = true;
 
             // prepare a SQL statement
-            string sqlStatement = "INSERT INTO users (USERNAME, PASSWORD) VALUES (@username, @password)";
+            string sqlStatement = "INSERT INTO [dbo].[Users] (USERNAME, PASSWORD) VALUES (@username, @password)";
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
@@ -137,6 +146,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
                 }
                 catch (Exception ex) // catch exceptions during the command execution
                 {
+                    logger.Error(ex.Message);
                     Console.Write(ex.Message);
                     success = false;
                 }

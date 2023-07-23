@@ -1,4 +1,5 @@
 ﻿using _451_NathanMeyer_SeniorProject.Models;
+using NLog;
 using System.Data.SqlClient;
 
 namespace _451_NathanMeyer_SeniorProject.Services
@@ -6,8 +7,10 @@ namespace _451_NathanMeyer_SeniorProject.Services
     // class: SaveGameDAO. This class connects to the MySQL server and manages saved game data.
     public class SaveGameDAO
     {
+        private static Logger logger = LogManager.GetLogger("SeniorAppLoggerrule");
+
         // connection string for connecting to the MySQL database
-        public string connectionString = @"Database=localdb;Data Source=127.0.0.1:55629;User Id=azure;Password=6#vWHD_$";
+        public string connectionString = @"Server=tcp:nmeyer-testserver.database.windows.net,1433;Initial Catalog=GCU-CST-407;Persist Security Info=False;User ID=userAdmin;Password=V7rSJCvxSzjdd6K;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         // OLD CONNECTION STRING FOR LOCAL TESTING
         // string connectionString = @"Data Source=(localdb)\ProjectModels;Initial Catalog=CST451Database;Integrated Security=True;Connect Timeout=30;Encrypt=False";
@@ -19,7 +22,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
             List<SaveGameDTO> foundGames = new List<SaveGameDTO>();
 
             // prepare a SQL statement
-            string sqlStatement = "SELECT * FROM savedgames WHERE UserID = @id";
+            string sqlStatement = "SELECT * FROM [dbo].[SavedGames] WHERE UserID = @id";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -43,6 +46,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
                 }
                 catch (Exception ex) // catch exceptions during the command execution
                 {
+                    logger.Error(ex.Message);
                     Console.Write(ex.Message);
                 }
             }
@@ -57,7 +61,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
             SaveGameDTO foundSave = new SaveGameDTO();
 
             // prepare a SQL statement
-            string sqlStatement = "SELECT * FROM savedgames WHERE GameId = @id";
+            string sqlStatement = "SELECT * FROM [dbo].[SavedGames] WHERE GameId = @id";
 
             using (SqlConnection connection = new SqlConnection( connectionString))
             {
@@ -81,6 +85,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
                 }
                 catch (Exception ex) // catch exceptions during the command execution
                 {
+                    logger.Error(ex.Message);
                     Console.Write(ex.Message);
                 }
             }
@@ -94,7 +99,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
             bool success = true;
 
             // prepare a SQL statement
-            string sqlStatement = "INSERT INTO savedgames (USERID, SAVEDATA, SAVEDATE) VALUES (@userid, @savedata, @savedate)";
+            string sqlStatement = "INSERT INTO [dbo].[SavedGames] (USERID, SAVEDATA, SAVEDATE) VALUES (@userid, @savedata, @savedate)";
 
             using (SqlConnection conn = new SqlConnection(connectionString)) 
             {
@@ -114,6 +119,7 @@ namespace _451_NathanMeyer_SeniorProject.Services
                 }
                 catch(Exception ex) // catch exceptions during the command execution
                 {
+                    logger.Error(ex.Message);
                     Console.Write(ex.Message);
                     success = false;
                 }

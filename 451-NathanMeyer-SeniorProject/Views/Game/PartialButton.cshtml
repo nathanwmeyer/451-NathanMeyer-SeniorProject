@@ -4,7 +4,7 @@
     string[] img = { "offButton.png", "onButton.png" };
 }
 
-<button class="game-button" type="submit" value="@Model.ButtonId" name="buttonNumber" asp-controller="Game" asp-action="HandleButtonClick">
+<button class="game-button" value="@Model.ButtonId" name="buttonNumber">
     <img class="game-button-image" src="~/img/@img[Model.State]"/>
     <div class="button-label">
         @Model.ButtonId
