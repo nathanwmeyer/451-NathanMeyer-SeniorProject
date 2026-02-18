@@ -10,13 +10,15 @@ namespace _451_NathanMeyer_SeniorProject.Services
         private static Logger logger = LogManager.GetLogger("SeniorAppLoggerrule");
 
         // connection string for connecting to the MySQL database
-        public string connectionString = @"Server=tcp:nmeyer-testserver.database.windows.net,1433;Initial Catalog=GCU-CST-407;Persist Security Info=False;User ID=userAdmin;Password=V7rSJCvxSzjdd6K;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        public string connectionString = @"Server=tcp:nm-portfolio.database.windows.net,1433;Initial Catalog=free-sql-db-1113525;Persist Security Info=False;User ID=BackEndaccess;Password=4ysU3AUqZPen;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
-        // OLD CONNECTION STRING FOR LOCAL TESTING
-        // string connectionString = @"Data Source=(localdb)\ProjectModels;Initial Catalog=CST451Database;Integrated Security=True;Connect Timeout=30;Encrypt=False";
+		
 
-        // method: FindUserGames. This method returns a list of games that have a user id matching the requested id.
-        public List<SaveGameDTO> FindUserGames(int id)
+		// OLD CONNECTION STRING FOR LOCAL TESTING
+		// string connectionString = @"Data Source=(localdb)\ProjectModels;Initial Catalog=CST451Database;Integrated Security=True;Connect Timeout=30;Encrypt=False";
+
+		// method: FindUserGames. This method returns a list of games that have a user id matching the requested id.
+		public List<SaveGameDTO> FindUserGames(int id)
         {
             // create a list of found games to return to the user
             List<SaveGameDTO> foundGames = new List<SaveGameDTO>();
